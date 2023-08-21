@@ -12,7 +12,7 @@ else
 fi
 
 # Check if net.ipv4.conf.all.accept_source_route is set to 0
-ipv4_value=$(sysctl -n net.ipv4.conf.all.accept_source_route=0)
+ipv4_value=$(sysctl -n net.ipv4.conf.all.accept_source_route)
 if [ "$ipv4_value" -eq 0 ]; then
     success_2=true
 else

@@ -13,7 +13,7 @@ else
 fi
 
 # Check if net.ipv4.conf.all.accept_redirects is set to 0
-ipv4_value=$(sysctl -n net.ipv4.conf.all.accept_redirects=0)
+ipv4_value=$(sysctl -n net.ipv4.conf.all.accept_redirects)
 if [ "$ipv4_value" -eq 0 ]; then
     success_2=true
 else
@@ -21,7 +21,7 @@ else
 fi
 
 # Check if net.ipv6.conf.all.accept_redirects is set to 0
-ipv6_value=$(sysctl -n net.ipv6.conf.all.accept_redirects=0)
+ipv6_value=$(sysctl -n net.ipv6.conf.all.accept_redirects)
 if [ "$ipv6_value" -eq 0 ]; then
     success_3=true
 else

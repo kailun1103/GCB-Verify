@@ -12,7 +12,7 @@ else
 fi
 
 # Check if net.ipv4.conf.default.send_redirects=0 is set to 0
-ipv4_value=$(sysctl -n net.ipv4.conf.default.send_redirects=0)
+ipv4_value=$(sysctl -n net.ipv4.conf.default.send_redirects)
 if [ "$ipv4_value" -eq 0 ]; then
     success_2=true
 else

@@ -12,7 +12,7 @@ else
 fi
 
 # Check if net.ipv4.conf.all.log_martians is set to 1
-ipv4_value=$(sysctl -n net.ipv4.conf.all.log_martians=1)
+ipv4_value=$(sysctl -n net.ipv4.conf.all.log_martians)
 if [ "$ipv4_value" -eq 1 ]; then
     success_2=true
 else

@@ -13,7 +13,7 @@ else
 fi
 
 # Check if net.ipv4.conf.default.accept_source_route is set to 0
-ipv4_value=$(sysctl -n net.ipv4.conf.default.accept_source_route=0)
+ipv4_value=$(sysctl -n net.ipv4.conf.default.accept_source_route)
 if [ "$ipv4_value" -eq 0 ]; then
     success_2=true
 else
@@ -21,7 +21,7 @@ else
 fi
 
 # Check if net.ipv6.conf.default.accept_source_route is set to 0
-ipv6_value=$(sysctl -n net.ipv6.conf.default.accept_source_route=0)
+ipv6_value=$(sysctl -n net.ipv6.conf.default.accept_source_route)
 if [ "$ipv6_value" -eq 0 ]; then
     success_3=true
 else
