@@ -1,10 +1,12 @@
 #!/bin/bash
 
-CP=$(authselect current | awk 'NR == 1 {print $3}' | grep custom/)
+username="kailun1103"
+expected_inactive_days=30
 
-for FN in system-auth password-auth; do
-    [[ -n $CP ]] && PTF=/etc/authselect/$CP/$FN || PTF=/etc/authselect/$FN
-    [[ -n $(grep -E '^\s*password\s+requisite\s+pam_pwquality.so\s+.*\s+retry=\S+\s*.*$' $PTF) ]] && sed -ri '/pwquality/s/retry=\S+/retry=3/' $PTF || sed -ri 's/^\s*(password\s+requisite\s+pam_pwquality.so\s+)(.*)$/\1\2 retry=3/' $PTF
+inactive_days=$(chage -l "$username" | grep "Inactive:" | awk -F: '{print $2}' | tr -d ' ')
+if [ "$inactive_days" -eq "$expected_inactive_days" ]; then
+    echo "The inactive days for user $username are correctly set to $expected_inactive_days"
+else
+    echo "The inactive days for user $username are not set to $expected_inactive_days"
+fi
 
-done
-authselect apply-changes
