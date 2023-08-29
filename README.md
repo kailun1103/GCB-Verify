@@ -20,8 +20,14 @@
 ## 執行腳本
 
 以(TWGCB-01-008-0092_Check.sh)為例
-1. 執行腳本指令: bash TWGCB-01-008-0092_Check.sh
-2. 編輯腳本指令: vim TWGCB-01-008-0092_Check.sh
+1. 執行腳本指令
+```bash
+bash TWGCB-01-008-0092_Check.sh
+```
+2. 編輯腳本指令
+```bash
+vim TWGCB-01-008-0092_Check.sh
+```
 
 ## 貢獻
 
