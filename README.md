@@ -13,7 +13,7 @@
 
 ## 影片展示
 
-([https://www.youtube.com/watch?v=VvKFSDbbvzY](https://youtu.be/dV6ktTo5dTo?si=e5Q179PX-uSeWX6U))
+[![影片縮圖](https://img.youtube.com/vi/dV6ktTo5dTo/0.jpg)](https://www.youtube.com/watch?v=dV6ktTo5dTo)
 
 （點擊圖片觀看影片）
 
