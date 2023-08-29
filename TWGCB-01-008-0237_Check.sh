@@ -2,10 +2,21 @@
 
 success=false
 
-if grep -q "readonly TMOUT=900 ; export TMOUT" /etc/bashrc && grep -q "readonly TMOUT=900 ; export TMOUT" /etc/profile; then
+# excute first command
+awk -F: '($1!="root" && $1!="sync" && $1!="shutdown" && $1!="halt" && $1!~/^\+/ && $3<'"$(awk '/^\s*UID_MIN/{print $2}' /etc/login.defs)"' && $7!="'"$(which nologin)"'" && $7!="/bin/false") {print $1}' /etc/passwd | while read user; do usermod -s $(which nologin) $user; done
+
+if [ $? -eq 0 ]; then
+  # excute second command
+  awk -F: '($1!="root" && $1!~/^\+/ && $3<'"$(awk '/^\s*UID_MIN/{print $2}' /etc/login.defs)"') {print $1}' /etc/passwd | xargs -I '{}' passwd -S '{}' | awk '($2!="L" && $2!="LK") {print $1}' | while read user; do usermod -L $user; done
+
+  # if all command all set
+  if [ $? -eq 0 ]; then
     success=true
-else
+  else
     success=false
+  fi
+else
+  success=false
 fi
 
 if $success; then

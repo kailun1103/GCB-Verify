@@ -1,13 +1,8 @@
 #!/bin/bash
-# Set initial boolean value to false
+
 success=false
 
-expected_line="/org/gnome/desktop/session/idle-delay
-/org/gnome/desktop/screensaver/lock-enabled
-/org/gnome/desktop/screensaver/lock-delay
-/org/gnome/desktop/lockdown/disable-lock-screen"
-
-if grep -q "$expected_line" /etc/dconf/db/local.d/locks/session; then
+if grep -q "readonly TMOUT=900 ; export TMOUT" /etc/bashrc && grep -q "readonly TMOUT=900 ; export TMOUT" /etc/profile; then
     success=true
 else
     success=false
